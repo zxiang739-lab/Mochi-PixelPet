@@ -1,0 +1,1010 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00366E2C7BE8E8C03DCEB8B3 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0E28EF0E72CABC65908DF /* SnapshotStore.swift */; };
+		0CE06F54C8A6F1940A9EA584 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2906FED040AF9744F6CEE09E /* HomeView.swift */; };
+		0D9CA0945B7AF6A7E2576CD2 /* BagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DFBD16A0B8F9DE3314A36E /* BagView.swift */; };
+		10A514E96F8FC893447E63F4 /* PetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AACA495543CC5B311CA7C7 /* PetSnapshot.swift */; };
+		12F17E9281DD4FAEAFDA88E8 /* OfflineSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3375439C0806419D566EC645 /* OfflineSimulator.swift */; };
+		14B279174DF80AA459DD0F24 /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813F8A80470133B0A215419 /* SeededGenerator.swift */; };
+		160B7BE609E37A0C62422B52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACC19BDD38A37689579B7C04 /* Assets.xcassets */; };
+		18B3DAA2DC60060595A3C022 /* EventCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C688CC4EEAF30D9DB953E /* EventCatalog.swift */; };
+		234702E8DD2A04A4F6932FD7 /* PetRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF00BEA7E78B4CE2D15B0D7 /* PetRecords.swift */; };
+		25539AE36A4F12AB4F71CF05 /* OfflineSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3375439C0806419D566EC645 /* OfflineSimulator.swift */; };
+		288EDA16E5C0C3BDBAE40683 /* PersonalityEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C788F80C44A1CD368B062C05 /* PersonalityEngine.swift */; };
+		28FCB1C8ACD3E6282AA01F92 /* GrowthEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6BAA1A48C9E6F70493DE1 /* GrowthEngine.swift */; };
+		298701A5A93A432D9D0E8408 /* GrowthStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E1BE2B8D849C1DB1F4B79 /* GrowthStage.swift */; };
+		2CEA8D15643E38729D10EAF3 /* IntentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A1ADB8070DF08EBA40334 /* IntentBridge.swift */; };
+		2DFB996C6B28AEEEDBF03217 /* PetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31CE3F4C58A41A51DB2FD3 /* PetState.swift */; };
+		317DAC1D43FF23BFE3E9E95A /* ItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C722442C10EEA75AB95B7 /* ItemCatalog.swift */; };
+		31B00159BD4C72C716678D2B /* BoundedStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEB5FFB0BB3B83554D2EBC6 /* BoundedStat.swift */; };
+		34D7B4A8A28A794D7E3F926C /* PetEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68AA9BB53A69393EBC3FE84 /* PetEvent.swift */; };
+		37D2DF75278E3D0312EB4DAA /* PetStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F9DA2D9DD4F09FE6EB2ADF /* PetStats.swift */; };
+		38636010E5A9520FEA1B0A61 /* InteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF6E452D5056FD6814FE588 /* InteractionService.swift */; };
+		3A25CAA8180824299CE5BA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACC19BDD38A37689579B7C04 /* Assets.xcassets */; };
+		408FC96AFD42A4663737532E /* PetStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0395E5CC14C354CC10F5293B /* PetStatusWidget.swift */; };
+		49472B14FD7B9D52A4F5D516 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5195921652B2DC12BCACA /* DiaryView.swift */; };
+		4B7AF126A6BE5C3B5106A0D1 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9F347DFBC916CA9D815D12 /* Personality.swift */; };
+		4BB04A6B59EBA88D32DE8AFC /* PetEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68AA9BB53A69393EBC3FE84 /* PetEvent.swift */; };
+		4BE9F94EE3CCA1C3A59376B0 /* PetStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F9DA2D9DD4F09FE6EB2ADF /* PetStats.swift */; };
+		4BFF7794128B9E994BF10C96 /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813F8A80470133B0A215419 /* SeededGenerator.swift */; };
+		4D5CBED65AB98CA290DB68FB /* ItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C722442C10EEA75AB95B7 /* ItemCatalog.swift */; };
+		604AF7F141E087A1801B3E0C /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE90CB35C748621D0B2A643D /* DiaryEntry.swift */; };
+		615FFEED8A3D3D7196DE74A3 /* PetStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F9DA2D9DD4F09FE6EB2ADF /* PetStats.swift */; };
+		660C60DCD53F151AF044A6F8 /* PersonalityEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C788F80C44A1CD368B062C05 /* PersonalityEngine.swift */; };
+		6615B53481D9FA7D0BCCFB29 /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE90CB35C748621D0B2A643D /* DiaryEntry.swift */; };
+		6650CD80129FADF23A2B1D72 /* PetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5377E5D9ED8004B34D2804 /* PetScene.swift */; };
+		6D009A35587683FCF0EFB8E6 /* PetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31CE3F4C58A41A51DB2FD3 /* PetState.swift */; };
+		6E0B7A3EE2B8F87BB9834D99 /* BoundedStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEB5FFB0BB3B83554D2EBC6 /* BoundedStat.swift */; };
+		73C89F24DC42BEEB4BBEA1F8 /* GameClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CD417E86701B302FFDAB26 /* GameClock.swift */; };
+		74FE62E9D284DCB473EDB65C /* IntentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A1ADB8070DF08EBA40334 /* IntentBridge.swift */; };
+		7697E706DB3F6CEDEB84418F /* IntentBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2A1ADB8070DF08EBA40334 /* IntentBridge.swift */; };
+		7AEEAA7267D448F1D36D3B4E /* PetEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68AA9BB53A69393EBC3FE84 /* PetEvent.swift */; };
+		7B2C373CC41683E0EB1EC71F /* MochiLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC957C0F8EDDDFA64A062E6 /* MochiLiveActivity.swift */; };
+		7EC8C2B9B02C13E54ECFF803 /* BehaviorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7544164A7894D487AFB9D /* BehaviorState.swift */; };
+		7F52CBA995A9452F2A25BF80 /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813F8A80470133B0A215419 /* SeededGenerator.swift */; };
+		8284DE8C6FD3DED83BB0F5B0 /* OfflineSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3375439C0806419D566EC645 /* OfflineSimulator.swift */; };
+		839B5AE7CD3885EFC66044D0 /* BehaviorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7544164A7894D487AFB9D /* BehaviorState.swift */; };
+		84687A4FF330BF86B9974233 /* InteractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8801BF5C8BD76958A7AC5F7 /* InteractionTests.swift */; };
+		848346E88FAE3655CCC045B7 /* OfflineSettlementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5973A6A1213EA5650540AB /* OfflineSettlementTests.swift */; };
+		92DBCC5B60E2786E50B5AFCC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75B0DC0C502EA7018B4676D /* RootView.swift */; };
+		9DFC5D92D6CC8AC21805667D /* MochiActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF4E7DE11ABEA397E90C60 /* MochiActivityAttributes.swift */; };
+		A0B4B088DDF8929769D80765 /* GrowthEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6BAA1A48C9E6F70493DE1 /* GrowthEngine.swift */; };
+		A1F767A441EE2D9D34064347 /* GrowthStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E1BE2B8D849C1DB1F4B79 /* GrowthStage.swift */; };
+		A6ABD7D3D9E6ACD006070EF7 /* PetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AACA495543CC5B311CA7C7 /* PetSnapshot.swift */; };
+		AA8264B36E670E07E60ACD54 /* EventEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9658725D0A51865E4A56C1E /* EventEngine.swift */; };
+		ADC06BA94C18D81EF2C28BB9 /* GrowthEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6BAA1A48C9E6F70493DE1 /* GrowthEngine.swift */; };
+		B1C8B63B6EFE9AC533E4B01E /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B9CCB554F500E20909AE3 /* DomainTests.swift */; };
+		B2096C7795D702F9DE974D0E /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE90CB35C748621D0B2A643D /* DiaryEntry.swift */; };
+		B260558AB3AE352464634AEA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B941E37A46A71ACDA9DE163 /* SettingsView.swift */; };
+		B6DCA91AF5214EA2CD31F288 /* EventEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9658725D0A51865E4A56C1E /* EventEngine.swift */; };
+		B7BE5C93EB0C477F8552DDBC /* PetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AACA495543CC5B311CA7C7 /* PetSnapshot.swift */; };
+		B89CD033DA5511753778BAB6 /* InteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF6E452D5056FD6814FE588 /* InteractionService.swift */; };
+		C1EC08C6EA165E836ABC58CE /* PetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31CE3F4C58A41A51DB2FD3 /* PetState.swift */; };
+		C4D84C754B39BE19C4F2B024 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9F347DFBC916CA9D815D12 /* Personality.swift */; };
+		C5C4159CB76639008FB18149 /* GameClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CD417E86701B302FFDAB26 /* GameClock.swift */; };
+		C916AB00A543F36FEA73A266 /* MochiActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF4E7DE11ABEA397E90C60 /* MochiActivityAttributes.swift */; };
+		C91D6E2B897472D03FA47E49 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A213E6DF92331A332B518 /* LiveActivityManager.swift */; };
+		C9A9EE57957C50756203DBEE /* PetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8930F6703A4A45D34672D2F1 /* PetTimelineProvider.swift */; };
+		CB3F1E004C5257EA24EB73CF /* MochiWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8CE25E9D885FCC20714B5AFD /* MochiWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD5CD50E4A2B594AA0CACBDE /* PersonalityEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C788F80C44A1CD368B062C05 /* PersonalityEngine.swift */; };
+		CF5BAA916305FFDF820A81B1 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0E28EF0E72CABC65908DF /* SnapshotStore.swift */; };
+		D01753F415A7BFC9D4452D01 /* EventEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9658725D0A51865E4A56C1E /* EventEngine.swift */; };
+		D0C6CD921755EA8AD0F7BB2E /* GameClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CD417E86701B302FFDAB26 /* GameClock.swift */; };
+		D13FF2A26BEF854F07D50A02 /* ItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C722442C10EEA75AB95B7 /* ItemCatalog.swift */; };
+		D1998B58EA95555E4955DDBE /* InteractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF6E452D5056FD6814FE588 /* InteractionService.swift */; };
+		D726C1DC525E65A22C64E49A /* BehaviorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7544164A7894D487AFB9D /* BehaviorState.swift */; };
+		DC9E9910C6E8B01AED04E3B6 /* GlassKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC4C76CE8E44087C84934D /* GlassKit.swift */; };
+		DD0C615BB2DC819C159F0EC7 /* BoundedStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEB5FFB0BB3B83554D2EBC6 /* BoundedStat.swift */; };
+		E1450518D40BAB5D16BD75FC /* PetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC26E17A987395D7521B8835 /* PetIntents.swift */; };
+		E3178E77EBA7AEA2D9FFEE28 /* EventCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C688CC4EEAF30D9DB953E /* EventCatalog.swift */; };
+		E5106E8515455E2E956AF1FC /* EventCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C688CC4EEAF30D9DB953E /* EventCatalog.swift */; };
+		E539AE99C5D92569088E1AF6 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72D9F3AF34C669626014D3 /* NotificationScheduler.swift */; };
+		E68C853EFCB033C66ADD1694 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9F347DFBC916CA9D815D12 /* Personality.swift */; };
+		E69FB16F92FCA9FF548D176A /* GrowthStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344E1BE2B8D849C1DB1F4B79 /* GrowthStage.swift */; };
+		E7E784E983CE92074BACB140 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0E28EF0E72CABC65908DF /* SnapshotStore.swift */; };
+		ED8CD30720CF995F060EF3B4 /* MochiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED6667185EF7C416114D19 /* MochiUITests.swift */; };
+		F5B394C0B19D56E4D7D664E0 /* MochiActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF4E7DE11ABEA397E90C60 /* MochiActivityAttributes.swift */; };
+		F6B69E81D7A5F472783D6612 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA60326B390470832F5C79E /* ProfileView.swift */; };
+		F848B7BFBEB9D4018AC822C8 /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF70C9BD8483A7646FC526 /* CloudSyncManager.swift */; };
+		F855DCCDEB2D8EEE7597842D /* PetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B42B60A3A31454593B1E81A /* PetStore.swift */; };
+		FBA56B46396532F3088B858B /* MochiWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFAE0AA506E7B56FD21AC5E /* MochiWidgetBundle.swift */; };
+		FC39A47BE1E16C9F8FAD44A7 /* MochiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F72C2CFA7F9C97C9CF26F5 /* MochiApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0EF1D68D7FBD579671215A93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CEDBBB38DF9FF12BE415E62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23F0CBACB6A24F1429669699;
+			remoteInfo = Mochi;
+		};
+		3CBC56CF086135E3A92A1469 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CEDBBB38DF9FF12BE415E62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A68C826E2ABB2EAEF1975CFA;
+			remoteInfo = MochiWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6775661340D0E196EC19EDD8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CB3F1E004C5257EA24EB73CF /* MochiWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0395E5CC14C354CC10F5293B /* PetStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStatusWidget.swift; sourceTree = "<group>"; };
+		06AC4C76CE8E44087C84934D /* GlassKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassKit.swift; sourceTree = "<group>"; };
+		0B42B60A3A31454593B1E81A /* PetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStore.swift; sourceTree = "<group>"; };
+		0DFAE0AA506E7B56FD21AC5E /* MochiWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochiWidgetBundle.swift; sourceTree = "<group>"; };
+		11F9DA2D9DD4F09FE6EB2ADF /* PetStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStats.swift; sourceTree = "<group>"; };
+		15F5195921652B2DC12BCACA /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		182C688CC4EEAF30D9DB953E /* EventCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCatalog.swift; sourceTree = "<group>"; };
+		1E5708D9AFC95C265FAC44A8 /* Mochi.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27CD417E86701B302FFDAB26 /* GameClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClock.swift; sourceTree = "<group>"; };
+		2906FED040AF9744F6CEE09E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2B941E37A46A71ACDA9DE163 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2C2A1ADB8070DF08EBA40334 /* IntentBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentBridge.swift; sourceTree = "<group>"; };
+		3375439C0806419D566EC645 /* OfflineSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineSimulator.swift; sourceTree = "<group>"; };
+		344E1BE2B8D849C1DB1F4B79 /* GrowthStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthStage.swift; sourceTree = "<group>"; };
+		44DF70C9BD8483A7646FC526 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
+		46F72C2CFA7F9C97C9CF26F5 /* MochiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochiApp.swift; sourceTree = "<group>"; };
+		47EF4E7DE11ABEA397E90C60 /* MochiActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochiActivityAttributes.swift; sourceTree = "<group>"; };
+		4F5973A6A1213EA5650540AB /* OfflineSettlementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineSettlementTests.swift; sourceTree = "<group>"; };
+		50AACA495543CC5B311CA7C7 /* PetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSnapshot.swift; sourceTree = "<group>"; };
+		597A213E6DF92331A332B518 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
+		66DFBD16A0B8F9DE3314A36E /* BagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagView.swift; sourceTree = "<group>"; };
+		7B7568A3FED4CDAB1349A569 /* MochiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9B9CCB554F500E20909AE3 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		7FC957C0F8EDDDFA64A062E6 /* MochiLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochiLiveActivity.swift; sourceTree = "<group>"; };
+		8930F6703A4A45D34672D2F1 /* PetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTimelineProvider.swift; sourceTree = "<group>"; };
+		8999674883FB373CAA0B2D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8CE25E9D885FCC20714B5AFD /* MochiWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = MochiWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E31CE3F4C58A41A51DB2FD3 /* PetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetState.swift; sourceTree = "<group>"; };
+		9A9F347DFBC916CA9D815D12 /* Personality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personality.swift; sourceTree = "<group>"; };
+		9BD0E28EF0E72CABC65908DF /* SnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStore.swift; sourceTree = "<group>"; };
+		9BF00BEA7E78B4CE2D15B0D7 /* PetRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRecords.swift; sourceTree = "<group>"; };
+		9CED6667185EF7C416114D19 /* MochiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MochiUITests.swift; sourceTree = "<group>"; };
+		9DBD7538EAA4BC38B07F00D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A8801BF5C8BD76958A7AC5F7 /* InteractionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionTests.swift; sourceTree = "<group>"; };
+		AC73E9BE09168BC107F4FA2D /* MochiUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MochiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACC19BDD38A37689579B7C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AEEB5FFB0BB3B83554D2EBC6 /* BoundedStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundedStat.swift; sourceTree = "<group>"; };
+		B8D2FAEA041848BEAF8B51E9 /* MochiWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MochiWidgets.entitlements; sourceTree = "<group>"; };
+		BAA00C6E3EA7B2B5764EA8FF /* ART_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ART_GUIDE.md; sourceTree = "<group>"; };
+		BC26E17A987395D7521B8835 /* PetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetIntents.swift; sourceTree = "<group>"; };
+		BE5377E5D9ED8004B34D2804 /* PetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetScene.swift; sourceTree = "<group>"; };
+		C68AA9BB53A69393EBC3FE84 /* PetEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetEvent.swift; sourceTree = "<group>"; };
+		C788F80C44A1CD368B062C05 /* PersonalityEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityEngine.swift; sourceTree = "<group>"; };
+		C7A6BAA1A48C9E6F70493DE1 /* GrowthEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthEngine.swift; sourceTree = "<group>"; };
+		C9658725D0A51865E4A56C1E /* EventEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEngine.swift; sourceTree = "<group>"; };
+		CA5C722442C10EEA75AB95B7 /* ItemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCatalog.swift; sourceTree = "<group>"; };
+		CC72D9F3AF34C669626014D3 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		CFA60326B390470832F5C79E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D150726AC5738EEBC4AB1D0F /* Mochi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mochi.entitlements; sourceTree = "<group>"; };
+		DBF6E452D5056FD6814FE588 /* InteractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionService.swift; sourceTree = "<group>"; };
+		E75B0DC0C502EA7018B4676D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		EE90CB35C748621D0B2A643D /* DiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
+		F25724237AD54D98DC75A4A9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F5F7544164A7894D487AFB9D /* BehaviorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorState.swift; sourceTree = "<group>"; };
+		F813F8A80470133B0A215419 /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2A5F5FBBD188EC085E50E048 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				691F178D0681F50DFF9B8B44 /* MochiCoreTests */,
+				D78A941C51A37F0AD72612F7 /* MochiUITests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		2C26950FCBAC562A831ABF46 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				44DF70C9BD8483A7646FC526 /* CloudSyncManager.swift */,
+				597A213E6DF92331A332B518 /* LiveActivityManager.swift */,
+				CC72D9F3AF34C669626014D3 /* NotificationScheduler.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2DF5F178CE36A66E816B206C /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				C9658725D0A51865E4A56C1E /* EventEngine.swift */,
+				27CD417E86701B302FFDAB26 /* GameClock.swift */,
+				C7A6BAA1A48C9E6F70493DE1 /* GrowthEngine.swift */,
+				DBF6E452D5056FD6814FE588 /* InteractionService.swift */,
+				3375439C0806419D566EC645 /* OfflineSimulator.swift */,
+				C788F80C44A1CD368B062C05 /* PersonalityEngine.swift */,
+				F813F8A80470133B0A215419 /* SeededGenerator.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		34FE855CEEC49AB5120AE23C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				FA69E0403AF61B3DF854A305 /* Content */,
+				2DF5F178CE36A66E816B206C /* Engine */,
+				64FA463ABA4084C4E7E0BBDB /* Models */,
+				E367B436A84D60BCB2FC2B9C /* Shared */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		562B17599D8A16F3C5C7F0C3 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				BE5377E5D9ED8004B34D2804 /* PetScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		64FA463ABA4084C4E7E0BBDB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5F7544164A7894D487AFB9D /* BehaviorState.swift */,
+				AEEB5FFB0BB3B83554D2EBC6 /* BoundedStat.swift */,
+				EE90CB35C748621D0B2A643D /* DiaryEntry.swift */,
+				344E1BE2B8D849C1DB1F4B79 /* GrowthStage.swift */,
+				9A9F347DFBC916CA9D815D12 /* Personality.swift */,
+				C68AA9BB53A69393EBC3FE84 /* PetEvent.swift */,
+				50AACA495543CC5B311CA7C7 /* PetSnapshot.swift */,
+				8E31CE3F4C58A41A51DB2FD3 /* PetState.swift */,
+				11F9DA2D9DD4F09FE6EB2ADF /* PetStats.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		691F178D0681F50DFF9B8B44 /* MochiCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B9B9CCB554F500E20909AE3 /* DomainTests.swift */,
+				A8801BF5C8BD76958A7AC5F7 /* InteractionTests.swift */,
+				4F5973A6A1213EA5650540AB /* OfflineSettlementTests.swift */,
+			);
+			path = MochiCoreTests;
+			sourceTree = "<group>";
+		};
+		7E08BC60AD3686312E5F0053 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				06AC4C76CE8E44087C84934D /* GlassKit.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		89C31DB77873A61400CBD988 = {
+			isa = PBXGroup;
+			children = (
+				D4DB7D0B6F5D8C5A7FC7FFF2 /* Docs */,
+				B1BF6C0673CE0A60590EA1A2 /* Resources */,
+				D3916A049CEF898177556C32 /* Sources */,
+				2A5F5FBBD188EC085E50E048 /* Tests */,
+				F25724237AD54D98DC75A4A9 /* README.md */,
+				CF5E594876079175C6CBDC4E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8EF3D43A6030633DEF86E540 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66DFBD16A0B8F9DE3314A36E /* BagView.swift */,
+				15F5195921652B2DC12BCACA /* DiaryView.swift */,
+				2906FED040AF9744F6CEE09E /* HomeView.swift */,
+				CFA60326B390470832F5C79E /* ProfileView.swift */,
+				E75B0DC0C502EA7018B4676D /* RootView.swift */,
+				2B941E37A46A71ACDA9DE163 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF117236D43DD4325CA7D447 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				9DBD7538EAA4BC38B07F00D1 /* Info.plist */,
+				7FC957C0F8EDDDFA64A062E6 /* MochiLiveActivity.swift */,
+				0DFAE0AA506E7B56FD21AC5E /* MochiWidgetBundle.swift */,
+				B8D2FAEA041848BEAF8B51E9 /* MochiWidgets.entitlements */,
+				0395E5CC14C354CC10F5293B /* PetStatusWidget.swift */,
+				8930F6703A4A45D34672D2F1 /* PetTimelineProvider.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		B1BF6C0673CE0A60590EA1A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ACC19BDD38A37689579B7C04 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BBE63A86D2E423486873E2B3 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				9BF00BEA7E78B4CE2D15B0D7 /* PetRecords.swift */,
+				0B42B60A3A31454593B1E81A /* PetStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		CF5E594876079175C6CBDC4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E5708D9AFC95C265FAC44A8 /* Mochi.app */,
+				7B7568A3FED4CDAB1349A569 /* MochiTests.xctest */,
+				AC73E9BE09168BC107F4FA2D /* MochiUITests.xctest */,
+				8CE25E9D885FCC20714B5AFD /* MochiWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3916A049CEF898177556C32 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E5968E2DCD4947351A3A7C49 /* App */,
+				34FE855CEEC49AB5120AE23C /* Core */,
+				AF117236D43DD4325CA7D447 /* Widgets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D4DB7D0B6F5D8C5A7FC7FFF2 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				BAA00C6E3EA7B2B5764EA8FF /* ART_GUIDE.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		D78A941C51A37F0AD72612F7 /* MochiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9CED6667185EF7C416114D19 /* MochiUITests.swift */,
+			);
+			path = MochiUITests;
+			sourceTree = "<group>";
+		};
+		E367B436A84D60BCB2FC2B9C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2C2A1ADB8070DF08EBA40334 /* IntentBridge.swift */,
+				47EF4E7DE11ABEA397E90C60 /* MochiActivityAttributes.swift */,
+				9BD0E28EF0E72CABC65908DF /* SnapshotStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E5968E2DCD4947351A3A7C49 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7E08BC60AD3686312E5F0053 /* Design */,
+				EB654D507AF33E602DA7DD2D /* Intents */,
+				BBE63A86D2E423486873E2B3 /* Persistence */,
+				562B17599D8A16F3C5C7F0C3 /* Scene */,
+				2C26950FCBAC562A831ABF46 /* Services */,
+				8EF3D43A6030633DEF86E540 /* Views */,
+				8999674883FB373CAA0B2D58 /* Info.plist */,
+				D150726AC5738EEBC4AB1D0F /* Mochi.entitlements */,
+				46F72C2CFA7F9C97C9CF26F5 /* MochiApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EB654D507AF33E602DA7DD2D /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				BC26E17A987395D7521B8835 /* PetIntents.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		FA69E0403AF61B3DF854A305 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				182C688CC4EEAF30D9DB953E /* EventCatalog.swift */,
+				CA5C722442C10EEA75AB95B7 /* ItemCatalog.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23F0CBACB6A24F1429669699 /* Mochi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6765856521F19FD153EF08C3 /* Build configuration list for PBXNativeTarget "Mochi" */;
+			buildPhases = (
+				00452A60DD85348914B8D722 /* Sources */,
+				CD7B913D1D8121133F262748 /* Resources */,
+				6775661340D0E196EC19EDD8 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5AFA1E6E7B1F0A7FF59D073A /* PBXTargetDependency */,
+			);
+			name = Mochi;
+			packageProductDependencies = (
+			);
+			productName = Mochi;
+			productReference = 1E5708D9AFC95C265FAC44A8 /* Mochi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A68C826E2ABB2EAEF1975CFA /* MochiWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E435BBAA4A3C7A30472CFB0 /* Build configuration list for PBXNativeTarget "MochiWidgets" */;
+			buildPhases = (
+				9279888F948A66BF9E3BDF80 /* Sources */,
+				7A19688E247EAB28797B0EA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MochiWidgets;
+			packageProductDependencies = (
+			);
+			productName = MochiWidgets;
+			productReference = 8CE25E9D885FCC20714B5AFD /* MochiWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B7A9EEB1E07E5D8A61251E44 /* MochiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 971DB852EC814E9E36153572 /* Build configuration list for PBXNativeTarget "MochiTests" */;
+			buildPhases = (
+				79617BE8EAE84AE24E24AD1D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MochiTests;
+			packageProductDependencies = (
+			);
+			productName = MochiTests;
+			productReference = 7B7568A3FED4CDAB1349A569 /* MochiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4C3E2E8109AFFAFCB7B2155 /* MochiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 921FA24282BC125312114EAB /* Build configuration list for PBXNativeTarget "MochiUITests" */;
+			buildPhases = (
+				B853C0EF7C85066745D4F037 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE38027F7C058B07028D5C3F /* PBXTargetDependency */,
+			);
+			name = MochiUITests;
+			packageProductDependencies = (
+			);
+			productName = MochiUITests;
+			productReference = AC73E9BE09168BC107F4FA2D /* MochiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CEDBBB38DF9FF12BE415E62 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					F4C3E2E8109AFFAFCB7B2155 = {
+						TestTargetID = 23F0CBACB6A24F1429669699;
+					};
+				};
+			};
+			buildConfigurationList = 71988629A9030896CFC1A3F8 /* Build configuration list for PBXProject "Mochi" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 89C31DB77873A61400CBD988;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CF5E594876079175C6CBDC4E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23F0CBACB6A24F1429669699 /* Mochi */,
+				A68C826E2ABB2EAEF1975CFA /* MochiWidgets */,
+				B7A9EEB1E07E5D8A61251E44 /* MochiTests */,
+				F4C3E2E8109AFFAFCB7B2155 /* MochiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A19688E247EAB28797B0EA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A25CAA8180824299CE5BA75 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD7B913D1D8121133F262748 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				160B7BE609E37A0C62422B52 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00452A60DD85348914B8D722 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D9CA0945B7AF6A7E2576CD2 /* BagView.swift in Sources */,
+				D726C1DC525E65A22C64E49A /* BehaviorState.swift in Sources */,
+				31B00159BD4C72C716678D2B /* BoundedStat.swift in Sources */,
+				F848B7BFBEB9D4018AC822C8 /* CloudSyncManager.swift in Sources */,
+				B2096C7795D702F9DE974D0E /* DiaryEntry.swift in Sources */,
+				49472B14FD7B9D52A4F5D516 /* DiaryView.swift in Sources */,
+				18B3DAA2DC60060595A3C022 /* EventCatalog.swift in Sources */,
+				AA8264B36E670E07E60ACD54 /* EventEngine.swift in Sources */,
+				D0C6CD921755EA8AD0F7BB2E /* GameClock.swift in Sources */,
+				DC9E9910C6E8B01AED04E3B6 /* GlassKit.swift in Sources */,
+				A0B4B088DDF8929769D80765 /* GrowthEngine.swift in Sources */,
+				A1F767A441EE2D9D34064347 /* GrowthStage.swift in Sources */,
+				0CE06F54C8A6F1940A9EA584 /* HomeView.swift in Sources */,
+				7697E706DB3F6CEDEB84418F /* IntentBridge.swift in Sources */,
+				D1998B58EA95555E4955DDBE /* InteractionService.swift in Sources */,
+				317DAC1D43FF23BFE3E9E95A /* ItemCatalog.swift in Sources */,
+				C91D6E2B897472D03FA47E49 /* LiveActivityManager.swift in Sources */,
+				9DFC5D92D6CC8AC21805667D /* MochiActivityAttributes.swift in Sources */,
+				FC39A47BE1E16C9F8FAD44A7 /* MochiApp.swift in Sources */,
+				E539AE99C5D92569088E1AF6 /* NotificationScheduler.swift in Sources */,
+				25539AE36A4F12AB4F71CF05 /* OfflineSimulator.swift in Sources */,
+				C4D84C754B39BE19C4F2B024 /* Personality.swift in Sources */,
+				660C60DCD53F151AF044A6F8 /* PersonalityEngine.swift in Sources */,
+				34D7B4A8A28A794D7E3F926C /* PetEvent.swift in Sources */,
+				E1450518D40BAB5D16BD75FC /* PetIntents.swift in Sources */,
+				234702E8DD2A04A4F6932FD7 /* PetRecords.swift in Sources */,
+				6650CD80129FADF23A2B1D72 /* PetScene.swift in Sources */,
+				A6ABD7D3D9E6ACD006070EF7 /* PetSnapshot.swift in Sources */,
+				C1EC08C6EA165E836ABC58CE /* PetState.swift in Sources */,
+				615FFEED8A3D3D7196DE74A3 /* PetStats.swift in Sources */,
+				F855DCCDEB2D8EEE7597842D /* PetStore.swift in Sources */,
+				F6B69E81D7A5F472783D6612 /* ProfileView.swift in Sources */,
+				92DBCC5B60E2786E50B5AFCC /* RootView.swift in Sources */,
+				14B279174DF80AA459DD0F24 /* SeededGenerator.swift in Sources */,
+				B260558AB3AE352464634AEA /* SettingsView.swift in Sources */,
+				CF5BAA916305FFDF820A81B1 /* SnapshotStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79617BE8EAE84AE24E24AD1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				839B5AE7CD3885EFC66044D0 /* BehaviorState.swift in Sources */,
+				DD0C615BB2DC819C159F0EC7 /* BoundedStat.swift in Sources */,
+				6615B53481D9FA7D0BCCFB29 /* DiaryEntry.swift in Sources */,
+				B1C8B63B6EFE9AC533E4B01E /* DomainTests.swift in Sources */,
+				E5106E8515455E2E956AF1FC /* EventCatalog.swift in Sources */,
+				D01753F415A7BFC9D4452D01 /* EventEngine.swift in Sources */,
+				C5C4159CB76639008FB18149 /* GameClock.swift in Sources */,
+				28FCB1C8ACD3E6282AA01F92 /* GrowthEngine.swift in Sources */,
+				298701A5A93A432D9D0E8408 /* GrowthStage.swift in Sources */,
+				74FE62E9D284DCB473EDB65C /* IntentBridge.swift in Sources */,
+				B89CD033DA5511753778BAB6 /* InteractionService.swift in Sources */,
+				84687A4FF330BF86B9974233 /* InteractionTests.swift in Sources */,
+				4D5CBED65AB98CA290DB68FB /* ItemCatalog.swift in Sources */,
+				C916AB00A543F36FEA73A266 /* MochiActivityAttributes.swift in Sources */,
+				848346E88FAE3655CCC045B7 /* OfflineSettlementTests.swift in Sources */,
+				12F17E9281DD4FAEAFDA88E8 /* OfflineSimulator.swift in Sources */,
+				4B7AF126A6BE5C3B5106A0D1 /* Personality.swift in Sources */,
+				CD5CD50E4A2B594AA0CACBDE /* PersonalityEngine.swift in Sources */,
+				4BB04A6B59EBA88D32DE8AFC /* PetEvent.swift in Sources */,
+				10A514E96F8FC893447E63F4 /* PetSnapshot.swift in Sources */,
+				6D009A35587683FCF0EFB8E6 /* PetState.swift in Sources */,
+				4BE9F94EE3CCA1C3A59376B0 /* PetStats.swift in Sources */,
+				7F52CBA995A9452F2A25BF80 /* SeededGenerator.swift in Sources */,
+				E7E784E983CE92074BACB140 /* SnapshotStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9279888F948A66BF9E3BDF80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EC8C2B9B02C13E54ECFF803 /* BehaviorState.swift in Sources */,
+				6E0B7A3EE2B8F87BB9834D99 /* BoundedStat.swift in Sources */,
+				604AF7F141E087A1801B3E0C /* DiaryEntry.swift in Sources */,
+				E3178E77EBA7AEA2D9FFEE28 /* EventCatalog.swift in Sources */,
+				B6DCA91AF5214EA2CD31F288 /* EventEngine.swift in Sources */,
+				73C89F24DC42BEEB4BBEA1F8 /* GameClock.swift in Sources */,
+				ADC06BA94C18D81EF2C28BB9 /* GrowthEngine.swift in Sources */,
+				E69FB16F92FCA9FF548D176A /* GrowthStage.swift in Sources */,
+				2CEA8D15643E38729D10EAF3 /* IntentBridge.swift in Sources */,
+				38636010E5A9520FEA1B0A61 /* InteractionService.swift in Sources */,
+				D13FF2A26BEF854F07D50A02 /* ItemCatalog.swift in Sources */,
+				F5B394C0B19D56E4D7D664E0 /* MochiActivityAttributes.swift in Sources */,
+				7B2C373CC41683E0EB1EC71F /* MochiLiveActivity.swift in Sources */,
+				FBA56B46396532F3088B858B /* MochiWidgetBundle.swift in Sources */,
+				8284DE8C6FD3DED83BB0F5B0 /* OfflineSimulator.swift in Sources */,
+				E68C853EFCB033C66ADD1694 /* Personality.swift in Sources */,
+				288EDA16E5C0C3BDBAE40683 /* PersonalityEngine.swift in Sources */,
+				7AEEAA7267D448F1D36D3B4E /* PetEvent.swift in Sources */,
+				B7BE5C93EB0C477F8552DDBC /* PetSnapshot.swift in Sources */,
+				2DFB996C6B28AEEEDBF03217 /* PetState.swift in Sources */,
+				37D2DF75278E3D0312EB4DAA /* PetStats.swift in Sources */,
+				408FC96AFD42A4663737532E /* PetStatusWidget.swift in Sources */,
+				C9A9EE57957C50756203DBEE /* PetTimelineProvider.swift in Sources */,
+				4BFF7794128B9E994BF10C96 /* SeededGenerator.swift in Sources */,
+				00366E2C7BE8E8C03DCEB8B3 /* SnapshotStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B853C0EF7C85066745D4F037 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED8CD30720CF995F060EF3B4 /* MochiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5AFA1E6E7B1F0A7FF59D073A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A68C826E2ABB2EAEF1975CFA /* MochiWidgets */;
+			targetProxy = 3CBC56CF086135E3A92A1469 /* PBXContainerItemProxy */;
+		};
+		AE38027F7C058B07028D5C3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23F0CBACB6A24F1429669699 /* Mochi */;
+			targetProxy = 0EF1D68D7FBD579671215A93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		12518201ACCF03E330B5FC9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		197C0EBF34422BDCEB1CB070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43F8C06B7C0616EB126ACD5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sources/Widgets/MochiWidgets.entitlements;
+				INFOPLIST_FILE = Sources/Widgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi.widgets;
+				PRODUCT_NAME = MochiWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		512F3C7C186A8D421535E5CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sources/App/Mochi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/App/Info.plist;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi;
+				PRODUCT_NAME = Mochi;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6A7DB375EC44E2ACFD25BCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sources/App/Mochi.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/App/Info.plist;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi;
+				PRODUCT_NAME = Mochi;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7990DA4203B657378D3082ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8DD4DAE1E1A86B88AE0DBC51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mochi;
+			};
+			name = Release;
+		};
+		AE3E47078ABCC109E2810273 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C29E6E79F8691D5A041C6897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sources/Widgets/MochiWidgets.entitlements;
+				INFOPLIST_FILE = Sources/Widgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi.widgets;
+				PRODUCT_NAME = MochiWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DB4D80A578EE8A403D0CC101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zxiang739.mochi.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mochi;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6765856521F19FD153EF08C3 /* Build configuration list for PBXNativeTarget "Mochi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7DB375EC44E2ACFD25BCE3 /* Debug */,
+				512F3C7C186A8D421535E5CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		71988629A9030896CFC1A3F8 /* Build configuration list for PBXProject "Mochi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7990DA4203B657378D3082ED /* Debug */,
+				AE3E47078ABCC109E2810273 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8E435BBAA4A3C7A30472CFB0 /* Build configuration list for PBXNativeTarget "MochiWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43F8C06B7C0616EB126ACD5F /* Debug */,
+				C29E6E79F8691D5A041C6897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		921FA24282BC125312114EAB /* Build configuration list for PBXNativeTarget "MochiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB4D80A578EE8A403D0CC101 /* Debug */,
+				8DD4DAE1E1A86B88AE0DBC51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		971DB852EC814E9E36153572 /* Build configuration list for PBXNativeTarget "MochiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				197C0EBF34422BDCEB1CB070 /* Debug */,
+				12518201ACCF03E330B5FC9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8CEDBBB38DF9FF12BE415E62 /* Project object */;
+}
