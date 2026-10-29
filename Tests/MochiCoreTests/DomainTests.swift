@@ -170,8 +170,8 @@ final class PersonalityEngineTests: XCTestCase {
 
     func testNoDriftForShortAbsence() {
         var pet = PetState(name: "Test", createdAt: Date())
+        // `total` is derived from the individual counters, so setting plays is enough.
         pet.counters.plays = 40
-        pet.counters.total = 40
 
         let moved = engine.applySlowDrift(to: &pet, elapsed: 60)
         XCTAssertTrue(moved.isEmpty)
@@ -181,7 +181,6 @@ final class PersonalityEngineTests: XCTestCase {
     func testDriftIsBoundedPerSettlement() {
         var pet = PetState(name: "Test", createdAt: Date())
         pet.counters.plays = 100
-        pet.counters.total = 100
 
         _ = engine.applySlowDrift(to: &pet, elapsed: 3600)
         let afterOne = pet.personality[.liveliness]
@@ -192,7 +191,6 @@ final class PersonalityEngineTests: XCTestCase {
     func testHeavyPlayDoesNotMaxOutTrait() {
         var pet = PetState(name: "Test", createdAt: Date())
         pet.counters.plays = 1000
-        pet.counters.total = 1000
 
         for _ in 0..<100 {
             _ = engine.applySlowDrift(to: &pet, elapsed: 3600)
