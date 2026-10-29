@@ -91,32 +91,28 @@ struct StatMeter: View {
                     .foregroundStyle(.primary)
             }
 
-            GeometryReader { proxy in
-                ZStack(alignment: .leading) {
-                    Capsule()
-                        .fill(.black.opacity(0.08))
-                    Capsule()
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    Color(hex: key.tintHex),
-                                    Color(hex: key.tintHex).opacity(0.65)
-                                ],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
+            // A GeometryReader has no intrinsic width, so two of them side by
+            // side inside an HStack make the row unmeasurable and it overflows.
+            // Scaling a full-width capsule keeps the layout measurable.
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .fill(.black.opacity(0.08))
+                Capsule()
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color(hex: key.tintHex),
+                                Color(hex: key.tintHex).opacity(0.65)
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
                         )
-                        .frame(width: max(6, proxy.size.width * fraction))
-                        .overlay(alignment: .leading) {
-                            Capsule()
-                                .fill(.white.opacity(0.35))
-                                .frame(width: max(4, proxy.size.width * fraction * 0.4), height: 2)
-                                .padding(.leading, 4)
-                        }
-                }
+                    )
+                    .scaleEffect(x: max(0.015, fraction), y: 1, anchor: .leading)
             }
             .frame(height: compact ? 6 : 8)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(key.displayName) \(Int(value))")
         .accessibilityValue("\(Int(value)) / 100")
@@ -141,7 +137,9 @@ struct GlassActionButton: View {
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
-            .frame(width: 64, height: 58)
+            .frame(maxWidth: .infinity)
+            .frame(height: 58)
+            .padding(.horizontal, 2)
         }
         .buttonStyle(.glass)
         .disabled(!isEnabled)

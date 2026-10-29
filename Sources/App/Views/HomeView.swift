@@ -121,6 +121,7 @@ struct HomeView: View {
             }
             StatMeter(key: .bond, value: pet.stats.bond.value)
         }
+        .frame(maxWidth: .infinity)
         .glassPanel(cornerRadius: 26, padding: 14)
     }
 

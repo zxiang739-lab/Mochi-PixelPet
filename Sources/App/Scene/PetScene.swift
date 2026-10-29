@@ -145,10 +145,12 @@ final class PetScene: SKScene {
         guard !frames.isEmpty else { return }
 
         petNode.removeAction(forKey: "anim")
+        // `resize: true` would reset the node to the 32x32 pixel size of each
+        // frame, shrinking the creature on the first animation tick.
         let animate = SKAction.animate(
             with: frames,
             timePerFrame: state.secondsPerFrame,
-            resize: true,
+            resize: false,
             restore: false
         )
 

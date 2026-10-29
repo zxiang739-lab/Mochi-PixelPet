@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   PROJECT: Mochi.xcodeproj
@@ -20,170 +20,83 @@ env:
 
 jobs:
   build:
-    name: Build, test, package
+    name: Build and test
     runs-on: macos-26
-    timeout-minutes: 75
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show toolchain
+      - name: Toolchain
         run: |
           xcodebuild -version
-          xcrun simctl list runtimes | head -20
+          brew install xcodegen
+          xcodegen generate
 
-      - name: Install XcodeGen
-        run: brew install xcodegen
-
-      - name: Generate Xcode project
-        run: xcodegen generate
-
-      # ---------------------------------------------------------------- build
-      - name: Build for simulator (unsigned)
-        run: |
-          set -o pipefail
-          xcodebuild build \
-            -project "$PROJECT" \
-            -scheme "$SCHEME" \
-            -configuration Debug \
-            -destination 'generic/platform=iOS Simulator' \
-            -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            -quiet 2>&1 | tee build.log
-
-      # ----------------------------------------------------------- simulator
-      - name: Pick an available iPhone simulator
+      - name: Pick an iPhone simulator
         id: sim
         run: |
           UDID=$(xcrun simctl list devices available --json | /usr/bin/python3 -c '
           import json, sys
           devices = json.load(sys.stdin)["devices"]
-          chosen = ""
           for runtime in sorted(devices, reverse=True):
               if "iOS" not in runtime:
                   continue
               for device in devices[runtime]:
-                  if device["name"].startswith("iPhone") and device.get("isAvailable", True):
-                      chosen = device["udid"]
-                      break
-              if chosen:
-                  break
-          print(chosen)
+                  if device["name"].startswith("iPhone"):
+                      print(device["udid"])
+                      raise SystemExit
           ')
-          if [ -z "$UDID" ]; then
-            echo "No iPhone simulator found"; exit 1
-          fi
+          test -n "$UDID" || { echo "no iPhone simulator"; exit 1; }
           echo "udid=$UDID" >> "$GITHUB_OUTPUT"
-          echo "Selected simulator: $UDID"
 
-      # --------------------------------------------------------------- tests
-      - name: Unit tests (domain layer)
+      # One invocation compiles the app, the widget extension and every test
+      # target, then runs them. A separate build step would only repeat this work.
+      - name: Build and run all tests
         run: |
           set -o pipefail
           xcodebuild test \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
             -destination "id=${{ steps.sim.outputs.udid }}" \
-            -only-testing:MochiTests \
             -derivedDataPath build \
+            -resultBundlePath build/Tests.xcresult \
             CODE_SIGNING_ALLOWED=NO \
-            -resultBundlePath build/UnitTests.xcresult \
-            -quiet 2>&1 | tee unit-tests.log
+            CODE_SIGNING_REQUIRED=NO \
+            -quiet 2>&1 | tee test.log
 
-      - name: UI tests (key flows)
-        run: |
-          set -o pipefail
-          xcodebuild test \
-            -project "$PROJECT" \
-            -scheme "$SCHEME" \
-            -destination "id=${{ steps.sim.outputs.udid }}" \
-            -only-testing:MochiUITests \
-            -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO \
-            -resultBundlePath build/UITests.xcresult \
-            -quiet 2>&1 | tee ui-tests.log
-
-      - name: Summarise test results
-        if: always()
-        run: |
-          for bundle in build/UnitTests.xcresult build/UITests.xcresult; do
-            [ -d "$bundle" ] || continue
-            echo "== $bundle =="
-            xcrun xcresulttool get test-results summary --path "$bundle" 2>/dev/null \
-              || echo "(summary unavailable for this bundle)"
-          done
-
-      # ------------------------------------------------- arbitrary artifacts
-      - name: Launch app and capture screenshots
+      - name: Screenshot the running app
         if: always()
         run: |
           UDID="${{ steps.sim.outputs.udid }}"
           APP="build/Build/Products/Debug-iphonesimulator/Mochi.app"
           mkdir -p screenshots
           xcrun simctl boot "$UDID" 2>/dev/null || true
-          xcrun simctl bootstatus "$UDID" -b || true
-          xcrun simctl ui "$UDID" appearance light || true
-          if [ -d "$APP" ]; then
-            xcrun simctl install "$UDID" "$APP"
-            xcrun simctl launch "$UDID" "$BUNDLE_ID" || true
-            sleep 10
-            xcrun simctl io "$UDID" screenshot screenshots/home-light.png || true
-            xcrun simctl ui "$UDID" appearance dark || true
-            sleep 3
-            xcrun simctl io "$UDID" screenshot screenshots/home-dark.png || true
-          else
-            echo "Mochi.app not built; skipping screenshots"
-          fi
+          [ -d "$APP" ] || { echo "no app bundle"; exit 0; }
+          xcrun simctl install "$UDID" "$APP"
+          xcrun simctl launch "$UDID" "$BUNDLE_ID" || true
+          sleep 8
+          xcrun simctl io "$UDID" screenshot screenshots/home-light.png || true
+          xcrun simctl ui "$UDID" appearance dark || true
+          sleep 3
+          xcrun simctl io "$UDID" screenshot screenshots/home-dark.png || true
 
-      - name: Package simulator build
+      - name: Package
         if: always()
         run: |
-          APP="build/Build/Products/Debug-iphonesimulator/Mochi.app"
           mkdir -p artifacts
-          if [ -d "$APP" ]; then
-            ditto -c -k --sequesterRsrc --keepParent "$APP" "artifacts/Mochi-simulator.zip"
-            echo "packaged $(du -h artifacts/Mochi-simulator.zip | cut -f1)"
-          fi
-          cp build.log artifacts/ 2>/dev/null || true
-          cp unit-tests.log artifacts/ 2>/dev/null || true
-          cp ui-tests.log artifacts/ 2>/dev/null || true
+          APP="build/Build/Products/Debug-iphonesimulator/Mochi.app"
+          [ -d "$APP" ] && ditto -c -k --sequesterRsrc --keepParent "$APP" artifacts/Mochi-simulator.zip
+          cp test.log artifacts/ 2>/dev/null || true
           ls -la artifacts
 
-      - name: Upload build artifacts
+      - uses: actions/upload-artifact@v4
         if: always()
-        uses: actions/upload-artifact@v4
         with:
           name: Mochi-simulator-build
           path: |
             artifacts/
             screenshots/
+            build/Tests.xcresult
           if-no-files-found: warn
           retention-days: 30
-
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: |
-            build/UnitTests.xcresult
-            build/UITests.xcresult
-          if-no-files-found: warn
-          retention-days: 30
-
-      # ----------------------------------------------------- commit generated
-      - name: Commit generated Xcode project
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        continue-on-error: true
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f "$PROJECT"
-          if git diff --cached --quiet; then
-            echo "project already up to date"
-          else
-            git commit -m "chore: regenerate Xcode project from project.yml [skip ci]"
-            git push
-          fi
