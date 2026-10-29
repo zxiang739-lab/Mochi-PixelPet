@@ -188,7 +188,9 @@ struct InteractionService: Sendable {
             tool = soap
             pet.consumeItem("care.soap")
             consumed = [ItemReward("care.soap")]
-        } else if let brush {
+        } else if pet.count(of: "care.brush") > 0, let brush {
+            // The brush is reusable but must actually be owned. Checking the
+            // catalogue instead of the bag would let a fresh save clean for free.
             tool = brush
         } else {
             throw InteractionFailure("没有可以用的清洁工具")

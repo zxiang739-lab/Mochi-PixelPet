@@ -94,7 +94,9 @@ final class EventEngineTests: XCTestCase {
 
     func testCooldownBlocksAnEventThatJustFired() {
         var pet = makePet()
-        let definition = EventCatalog.shared.event("ev.daily.sunbeam")!
+        // `shell` has no hour or calendar gate, so the cooldown is the only
+        // thing under test here.
+        let definition = EventCatalog.shared.event("ev.collect.shell")!
         pet.eventCooldowns[definition.id] = now
 
         let eligible = engine.eligibleEvents(for: pet, at: now, offline: 0)
@@ -103,7 +105,7 @@ final class EventEngineTests: XCTestCase {
 
     func testCooldownExpiresAfterItsWindow() {
         var pet = makePet()
-        let definition = EventCatalog.shared.event("ev.daily.sunbeam")!
+        let definition = EventCatalog.shared.event("ev.collect.shell")!
         pet.eventCooldowns[definition.id] = now.addingTimeInterval(-definition.cooldown - 1)
 
         let eligible = engine.eligibleEvents(for: pet, at: now, offline: 0)
@@ -111,14 +113,17 @@ final class EventEngineTests: XCTestCase {
     }
 
     func testLevelRequirementIsEnforced() {
+        // `starfall` also requires prior explorations and a curious streak, so
+        // every gate has to be satisfied before it can appear.
         var pet = makePet(level: 1)
+        pet.counters.explorations = 20
+        pet.personality = Personality(curiosity: 0.9)
+
         let gated = EventCatalog.shared.event("ev.explore.starfall")!
-        let eligible = engine.eligibleEvents(for: pet, at: now, offline: 0)
-        XCTAssertFalse(eligible.contains { $0.id == gated.id })
+        XCTAssertFalse(engine.eligibleEvents(for: pet, at: now, offline: 0).contains { $0.id == gated.id })
 
         pet.level = 20
-        let unlocked = engine.eligibleEvents(for: pet, at: now, offline: 0)
-        XCTAssertTrue(unlocked.contains { $0.id == gated.id })
+        XCTAssertTrue(engine.eligibleEvents(for: pet, at: now, offline: 0).contains { $0.id == gated.id })
     }
 
     func testFestivalIsGatedOnCalendarMonth() {

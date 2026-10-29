@@ -112,13 +112,17 @@ final class InteractionServiceTests: XCTestCase {
     func testCleaningPrefersSoapThenFallsBackToBrush() throws {
         var pet = makePet()
         pet.stats.cleanliness = BoundedStat(20)
+        // Leave exactly one soap so the second pass has to fall back.
+        pet.inventory["care.soap"] = 1
 
         let first = try service.clean(pet: &pet, now: now)
         XCTAssertEqual(first.consumedItems.first?.itemID, "care.soap")
+        XCTAssertEqual(pet.count(of: "care.soap"), 0)
 
         pet.grantItem("care.brush")
         let second = try service.clean(pet: &pet, now: now.addingTimeInterval(60))
         XCTAssertTrue(second.consumedItems.isEmpty, "the brush is reusable")
+        XCTAssertEqual(pet.count(of: "care.brush"), 1, "and it is not consumed")
     }
 
     func testCleaningWithoutToolsFails() {
