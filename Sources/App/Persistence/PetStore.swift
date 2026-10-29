@@ -283,7 +283,7 @@ final class PetStore {
     // MARK: - Async helpers for views
 
     func requestNotificationPermission() async {
-        await notifications.requestAuthorization()
+        _ = await notifications.requestAuthorization()
     }
 
     func scheduleGentleReminder() async {

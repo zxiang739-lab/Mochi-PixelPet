@@ -105,12 +105,23 @@ jobs:
             -resultBundlePath build/UITests.xcresult \
             -quiet 2>&1 | tee ui-tests.log
 
+      - name: Summarise test results
+        if: always()
+        run: |
+          for bundle in build/UnitTests.xcresult build/UITests.xcresult; do
+            [ -d "$bundle" ] || continue
+            echo "== $bundle =="
+            xcrun xcresulttool get test-results summary --path "$bundle" 2>/dev/null \
+              || echo "(summary unavailable for this bundle)"
+          done
+
       # ------------------------------------------------- arbitrary artifacts
       - name: Launch app and capture screenshots
         if: always()
         run: |
           UDID="${{ steps.sim.outputs.udid }}"
           APP="build/Build/Products/Debug-iphonesimulator/Mochi.app"
+          mkdir -p screenshots
           xcrun simctl boot "$UDID" 2>/dev/null || true
           xcrun simctl bootstatus "$UDID" -b || true
           xcrun simctl ui "$UDID" appearance light || true
