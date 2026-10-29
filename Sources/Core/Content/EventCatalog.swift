@@ -43,7 +43,7 @@ struct EventCatalog: Sendable {
             diaryText: "你沿着水声走到一条溪边。水面浮着会发光的孢子，你伸爪碰了一下，它们散开又慢慢聚回来。",
             requirements: EventRequirements(minLevel: 4, minEnergy: 25),
             weight: 1.0, cooldown: 90 * 60,
-            effects: StatDeltas(mood: 9, cleanliness: 10, energy: -6, bond: 1),
+            effects: StatDeltas(mood: 9, energy: -6, cleanliness: 10, bond: 1),
             rewards: [ItemReward("food.starfruit")],
             experience: 12,
             animation: .curious
@@ -64,10 +64,7 @@ struct EventCatalog: Sendable {
             category: .exploration,
             title: "陨星碎屑",
             diaryText: "地上有一小块还在发热的石头。你绕着它转了三圈，最后把整个身体趴了上去。",
-            requirements: EventRequirements(
-                minLevel: 8, minExplorations: 5,
-                minTraits: [.curiosity: 0.55]
-            ),
+            requirements: EventRequirements(minLevel: 8, minExplorations: 5, minTraits: [.curiosity: 0.55]),
             weight: 0.5, cooldown: 6 * 3600,
             effects: StatDeltas(mood: 14, energy: -10, bond: 3),
             rewards: [ItemReward("col.feather")],
@@ -79,10 +76,7 @@ struct EventCatalog: Sendable {
             category: .exploration,
             title: "雾里的小径",
             diaryText: "雾很厚，你走了大概二十分钟，回来时路线完全不一样。你不肯说发生了什么。",
-            requirements: EventRequirements(
-                minLevel: 12, minExplorations: 15,
-                minTraits: [.independence: 0.6]
-            ),
+            requirements: EventRequirements(minLevel: 12, minExplorations: 15, minTraits: [.independence: 0.6]),
             weight: 0.4, cooldown: 12 * 3600,
             effects: StatDeltas(mood: 11, energy: -14, cleanliness: -12, bond: 4),
             rewards: [ItemReward("acc.starclip")],
@@ -159,9 +153,7 @@ struct EventCatalog: Sendable {
             category: .specialInteraction,
             title: "靠着睡着",
             diaryText: "你本来只是想靠一下，结果睡着了，还打了一点点呼噜。",
-            requirements: EventRequirements(
-                minBond: 35, minEnergy: 0, maxEnergy: 35, requiresAwake: true
-            ),
+            requirements: EventRequirements(minBond: 35, minEnergy: 0, maxEnergy: 35, requiresAwake: true),
             weight: 0.7, cooldown: 3 * 3600,
             effects: StatDeltas(mood: 12, energy: 10, bond: 6),
             experience: 14,
@@ -172,7 +164,7 @@ struct EventCatalog: Sendable {
             category: .specialInteraction,
             title: "叼来的东西",
             diaryText: "你叼了片叶子放到我脚边，然后退后两步看着我。我等了很久才明白那是礼物。",
-            requirements: EventRequirements(minBond: 45, minLevel: 5),
+            requirements: EventRequirements(minLevel: 5, minBond: 45),
             weight: 0.6, cooldown: 8 * 3600,
             effects: StatDeltas(mood: 14, bond: 8),
             rewards: [ItemReward("col.feather")],
@@ -184,7 +176,7 @@ struct EventCatalog: Sendable {
             category: .specialInteraction,
             title: "原地转圈",
             diaryText: "你突然开始原地转圈，转了八九圈，然后直直撞到垫子上，躺着不动了。",
-            requirements: EventRequirements(minMood: 75, minEnergy: 50),
+            requirements: EventRequirements(minEnergy: 50, minMood: 75),
             weight: 0.5, cooldown: 4 * 3600,
             effects: StatDeltas(mood: 10, energy: -12),
             experience: 12,
@@ -199,7 +191,7 @@ struct EventCatalog: Sendable {
             diaryText: "窗外有很远的响声和光。你躲在窗帘后面看了很久，最后把头搁在我手边。",
             requirements: EventRequirements(minLevel: 1, allowedMonths: [1]),
             weight: 2.5, cooldown: 36 * 3600,
-            effects: StatDeltas(mood: 20, bond: 6, energy: -5),
+            effects: StatDeltas(mood: 20, energy: -5, bond: 6),
             rewards: [ItemReward("food.honeycake", 2)],
             experience: 30,
             animation: .celebrate
@@ -222,7 +214,7 @@ struct EventCatalog: Sendable {
             diaryText: "月亮很圆。你坐在窗台上看了很久，我切了一小块东西给你，你吃得很慢。",
             requirements: EventRequirements(minLevel: 2, allowedMonths: [9, 10]),
             weight: 2.0, cooldown: 36 * 3600,
-            effects: StatDeltas(mood: 18, satiety: 15, bond: 5),
+            effects: StatDeltas(satiety: 15, mood: 18, bond: 5),
             rewards: [ItemReward("food.starfruit")],
             experience: 26,
             animation: .celebrate
@@ -260,10 +252,7 @@ struct EventCatalog: Sendable {
             category: .hidden,
             title: "深夜有人来过",
             diaryText: "凌晨三点，你忽然醒了，对着空无一物的门口看了很久。然后你换了个姿势继续睡。",
-            requirements: EventRequirements(
-                minLevel: 6, minBond: 20, requiresSleeping: true,
-                minimumOffline: 3 * 3600, allowedHours: [0, 1, 2, 3, 4]
-            ),
+            requirements: EventRequirements(minLevel: 6, minBond: 20, requiresSleeping: true, minimumOffline: 3 * 3600, allowedHours: [0, 1, 2, 3, 4]),
             weight: 0.3, cooldown: 24 * 3600,
             effects: StatDeltas(mood: -4, bond: 3),
             experience: 20,
@@ -275,9 +264,7 @@ struct EventCatalog: Sendable {
             category: .hidden,
             title: "你回来的时候",
             diaryText: "你离开了很久。我一直在同一个位置，只是把身体收紧了一点。",
-            requirements: EventRequirements(
-                minLevel: 1, minBond: 10, minimumOffline: 24 * 3600
-            ),
+            requirements: EventRequirements(minLevel: 1, minBond: 10, minimumOffline: 24 * 3600),
             weight: 1.5, cooldown: 12 * 3600,
             effects: StatDeltas(mood: -8, bond: 2),
             experience: 10,
@@ -289,10 +276,7 @@ struct EventCatalog: Sendable {
             category: .hidden,
             title: "一直等着",
             diaryText: "你没有催。你在门口坐了一会儿，然后又坐了一会儿。",
-            requirements: EventRequirements(
-                minLevel: 10, minBond: 50,
-                minTraits: [.independence: 0.6], minimumOffline: 8 * 3600
-            ),
+            requirements: EventRequirements(minLevel: 10, minBond: 50, minTraits: [.independence: 0.6], minimumOffline: 8 * 3600),
             weight: 0.4, cooldown: 24 * 3600,
             effects: StatDeltas(mood: 6, bond: 6),
             rewards: [ItemReward("furniture.swing")],
@@ -320,7 +304,7 @@ struct EventCatalog: Sendable {
             diaryText: "你在灰里滚了一圈，然后很满意地站起来，看着我。",
             requirements: EventRequirements(minLevel: 1, minEnergy: 40),
             weight: 1.1, cooldown: 2 * 3600,
-            effects: StatDeltas(mood: 6, cleanliness: -14, energy: -4),
+            effects: StatDeltas(mood: 6, energy: -4, cleanliness: -14),
             experience: 4,
             animation: .play
         ),
@@ -331,7 +315,7 @@ struct EventCatalog: Sendable {
             diaryText: "张大嘴打了很久的哈欠，打完眼睛都湿了。",
             requirements: EventRequirements(minLevel: 1, maxEnergy: 40),
             weight: 1.3, cooldown: 90 * 60,
-            effects: StatDeltas(energy: -2, mood: 2),
+            effects: StatDeltas(mood: 2, energy: -2),
             experience: 3,
             animation: .wake
         ),
@@ -340,9 +324,7 @@ struct EventCatalog: Sendable {
             category: .dailyLife,
             title: "做梦",
             diaryText: "睡着的时候四条腿在轻轻划，像在跑。不知道梦见了什么。",
-            requirements: EventRequirements(
-                minLevel: 2, requiresSleeping: true, minimumOffline: 30 * 60
-            ),
+            requirements: EventRequirements(minLevel: 2, requiresSleeping: true, minimumOffline: 30 * 60),
             weight: 1.0, cooldown: 4 * 3600,
             effects: StatDeltas(mood: 5, energy: 6),
             experience: 6,

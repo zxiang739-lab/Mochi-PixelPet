@@ -179,7 +179,7 @@ struct ItemCatalog: Sendable {
             id: "food.moonmilk", name: "月乳", category: .food,
             detail: "睡前喝一小杯，醒来毛会变得很顺。",
             source: .shop, isConsumable: true, requiredLevel: 2,
-            effects: StatDeltas(satiety: 12, energy: 22, mood: 4),
+            effects: StatDeltas(satiety: 12, mood: 4, energy: 22),
             price: 15
         ),
         ItemDefinition(
@@ -218,14 +218,14 @@ struct ItemCatalog: Sendable {
             id: "care.soap", name: "皂泡", category: .care,
             detail: "揉出来的泡比它自己还大。",
             source: .starter, isConsumable: true,
-            effects: StatDeltas(cleanliness: 45, mood: 4, bond: 1),
+            effects: StatDeltas(mood: 4, cleanliness: 45, bond: 1),
             price: 6
         ),
         ItemDefinition(
             id: "care.brush", name: "软毛刷", category: .care,
             detail: "顺着毛的方向刷，会发出满足的呼噜声。",
             source: .shop,
-            effects: StatDeltas(cleanliness: 30, mood: 8, bond: 4),
+            effects: StatDeltas(mood: 8, cleanliness: 30, bond: 4),
             price: 18
         ),
 

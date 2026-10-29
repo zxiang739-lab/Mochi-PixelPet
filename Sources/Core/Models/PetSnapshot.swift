@@ -23,7 +23,7 @@ struct PetSnapshot: Codable, Sendable, Equatable {
     var updatedAt: Date
     /// When the current one-shot animation or timed activity is expected to end.
     var nextChangeAt: Date?
-    var activeActivityKind: String?
+    var activeActivityKindRaw: String?
     var activeActivityEndsAt: Date?
     var dominantTraitRawValue: String?
 
@@ -56,7 +56,7 @@ struct PetSnapshot: Codable, Sendable, Equatable {
         self.companionDays = companionDays
         self.updatedAt = updatedAt
         self.nextChangeAt = nextChangeAt
-        self.activeActivityKind = activeActivity?.kind.rawValue
+        self.activeActivityKindRaw = activeActivity?.kind.rawValue
         self.activeActivityEndsAt = activeActivity?.endsAt
         self.dominantTraitRawValue = dominantTrait?.rawValue
     }
@@ -67,7 +67,7 @@ struct PetSnapshot: Codable, Sendable, Equatable {
         dominantTraitRawValue.flatMap(PersonalityTrait.init(rawValue:))
     }
     var activeActivityKind: ActiveActivity.Kind? {
-        activeActivityKind.flatMap(ActiveActivity.Kind.init(rawValue:))
+        activeActivityKindRaw.flatMap(ActiveActivity.Kind.init(rawValue:))
     }
 
     /// Sprite sheet name for the current form + behaviour, resolved without
