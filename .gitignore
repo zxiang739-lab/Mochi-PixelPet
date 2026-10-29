@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+Build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Mochi.xcodeproj is intentionally committed so you can open it without
+# installing XcodeGen. CI regenerates it from project.yml and commits any diff.
+
+# Tooling
+Tools/__pycache__/
+*.pyc
+.venv/
+
+# Secrets
+*.token
+.env

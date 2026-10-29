@@ -1,0 +1,178 @@
+name: iOS Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  PROJECT: Mochi.xcodeproj
+  SCHEME: Mochi
+  BUNDLE_ID: com.zxiang739.mochi
+
+jobs:
+  build:
+    name: Build, test, package
+    runs-on: macos-26
+    timeout-minutes: 75
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcrun simctl list runtimes | head -20
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      # ---------------------------------------------------------------- build
+      - name: Build for simulator (unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            -quiet 2>&1 | tee build.log
+
+      # ----------------------------------------------------------- simulator
+      - name: Pick an available iPhone simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available --json | /usr/bin/python3 -c '
+          import json, sys
+          devices = json.load(sys.stdin)["devices"]
+          chosen = ""
+          for runtime in sorted(devices, reverse=True):
+              if "iOS" not in runtime:
+                  continue
+              for device in devices[runtime]:
+                  if device["name"].startswith("iPhone") and device.get("isAvailable", True):
+                      chosen = device["udid"]
+                      break
+              if chosen:
+                  break
+          print(chosen)
+          ')
+          if [ -z "$UDID" ]; then
+            echo "No iPhone simulator found"; exit 1
+          fi
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          echo "Selected simulator: $UDID"
+
+      # --------------------------------------------------------------- tests
+      - name: Unit tests (domain layer)
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -only-testing:MochiTests \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            -resultBundlePath build/UnitTests.xcresult \
+            -quiet 2>&1 | tee unit-tests.log
+
+      - name: UI tests (key flows)
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -only-testing:MochiUITests \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            -resultBundlePath build/UITests.xcresult \
+            -quiet 2>&1 | tee ui-tests.log
+
+      # ------------------------------------------------- arbitrary artifacts
+      - name: Launch app and capture screenshots
+        if: always()
+        run: |
+          UDID="${{ steps.sim.outputs.udid }}"
+          APP="build/Build/Products/Debug-iphonesimulator/Mochi.app"
+          xcrun simctl boot "$UDID" 2>/dev/null || true
+          xcrun simctl bootstatus "$UDID" -b || true
+          xcrun simctl ui "$UDID" appearance light || true
+          if [ -d "$APP" ]; then
+            xcrun simctl install "$UDID" "$APP"
+            xcrun simctl launch "$UDID" "$BUNDLE_ID" || true
+            sleep 10
+            xcrun simctl io "$UDID" screenshot screenshots/home-light.png || true
+            xcrun simctl ui "$UDID" appearance dark || true
+            sleep 3
+            xcrun simctl io "$UDID" screenshot screenshots/home-dark.png || true
+          else
+            echo "Mochi.app not built; skipping screenshots"
+          fi
+
+      - name: Package simulator build
+        if: always()
+        run: |
+          APP="build/Build/Products/Debug-iphonesimulator/Mochi.app"
+          mkdir -p artifacts
+          if [ -d "$APP" ]; then
+            ditto -c -k --sequesterRsrc --keepParent "$APP" "artifacts/Mochi-simulator.zip"
+            echo "packaged $(du -h artifacts/Mochi-simulator.zip | cut -f1)"
+          fi
+          cp build.log artifacts/ 2>/dev/null || true
+          cp unit-tests.log artifacts/ 2>/dev/null || true
+          cp ui-tests.log artifacts/ 2>/dev/null || true
+          ls -la artifacts
+
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mochi-simulator-build
+          path: |
+            artifacts/
+            screenshots/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            build/UnitTests.xcresult
+            build/UITests.xcresult
+          if-no-files-found: warn
+          retention-days: 30
+
+      # ----------------------------------------------------- commit generated
+      - name: Commit generated Xcode project
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f "$PROJECT"
+          if git diff --cached --quiet; then
+            echo "project already up to date"
+          else
+            git commit -m "chore: regenerate Xcode project from project.yml [skip ci]"
+            git push
+          fi
