@@ -1,0 +1,98 @@
+name: Unsigned IPA
+
+# An IPA has to contain an arm64 device build. The .app produced by the main
+# CI job targets the iOS Simulator (a different architecture) and would never
+# launch on a phone, so this workflow builds the same sources for iphoneos and
+# wraps the result in the standard Payload/ layout.
+#
+# No signing identity is available on a public CI runner, so the resulting IPA
+# is deliberately unsigned. It is ready for local re-signing (Xcode, AltStore,
+# Sideloadly, or `codesign` with your own certificate + provisioning profile).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  PROJECT: Mochi.xcodeproj
+  SCHEME: Mochi
+  APP_NAME: Mochi.app
+
+jobs:
+  ipa:
+    name: Device build → unsigned IPA
+    runs-on: macos-26
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          xcrun --show-sdk-version --sdk iphoneos
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Build arm64 device app without signing
+        run: |
+          set +e
+          xcodebuild build \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            2>&1 | tee build.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            echo "::group::Build errors"
+            grep -E "error:|\*\* BUILD FAILED \*\*" build.log | tail -80 || true
+            tail -60 build.log
+            echo "::endgroup::"
+          fi
+          exit "$status"
+
+      - name: Package as IPA
+        run: |
+          APP="build/Build/Products/Release-iphoneos/$APP_NAME"
+          test -d "$APP" || {
+            echo "device .app not found"
+            find build/Build/Products -maxdepth 3 -type d | head -40
+            exit 1
+          }
+          echo "== main binary architectures =="
+          lipo -info "$APP/Mochi"
+          echo "== embedded extensions =="
+          ls -1 "$APP/PlugIns" 2>/dev/null || true
+          echo "== signature =="
+          codesign -dv "$APP" 2>&1 || echo "(unsigned - expected for this build)"
+          rm -rf ipa-root Mochi-unsigned.ipa
+          mkdir -p ipa-root/Payload
+          cp -R "$APP" ipa-root/Payload/
+          # -y keeps symlinks as symlinks, which matters for embedded frameworks.
+          (cd ipa-root && zip -qry ../Mochi-unsigned.ipa Payload)
+          echo "== IPA contents (head) =="
+          unzip -l Mochi-unsigned.ipa | head -18
+          shasum -a 256 Mochi-unsigned.ipa
+
+      # Best effort: with the default GITHUB_TOKEN a public fork may only have
+      # read access. The artifact below is always available as a fallback.
+      - name: Attach the IPA to release v1.0.0
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload v1.0.0 Mochi-unsigned.ipa --clobber --repo "$GITHUB_REPOSITORY"
+          echo "IPA attached to the release"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mochi-unsigned-ipa
+          path: Mochi-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 30
