@@ -43,7 +43,10 @@ xcodebuild test -project Mochi.xcodeproj -scheme Mochi \
 - `MochiTests` — 领域层单元测试（离线结算、事件引擎、性格漂移、成长曲线、交互校验、快照存储）
 - `MochiUITests` — 关键流程 UI 测试
 
-CI（`.github/workflows/ci.yml`）在 GitHub 托管的 `macos-26` 机器上执行同样的流程，并把构建产物、测试结果和模拟器截图作为 artifact 上传。
+CI（`.github/workflows/ci.yml`）在 GitHub 托管的 `macos-26` 机器上跑**一次** `xcodebuild test`：这一条命令同时完成 App + Widget Extension 的编译、53 个单元测试和 4 个 UI 测试，不再重复构建。全程 `CODE_SIGNING_ALLOWED=NO`，产物分两个 artifact：
+
+- `Mochi-screenshots` — 亮色 / 暗色首页截图，体积小，适合快速做视觉检查
+- `Mochi-simulator-build` — `Mochi-simulator.zip`（可直接装入模拟器）、`test.log` 与 `Tests.xcresult`
 
 ---
 

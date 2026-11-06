@@ -15,7 +15,7 @@ struct HomeView: View {
             spriteLayer
             overlayControls
         }
-        .ignoresSafeArea(edges: .top)
+        .clipped()
         .sheet(isPresented: $showsFeedSheet) {
             FeedSheet()
                 .environment(store)
@@ -26,18 +26,26 @@ struct HomeView: View {
     // MARK: - Layers
 
     private var roomBackground: some View {
-        Image(pet.room?.backgroundSprite ?? "bg_meadow")
-            .resizable()
-            .interpolation(.none)
-            .scaledToFill()
-            .overlay {
-                LinearGradient(
-                    colors: [.black.opacity(0.06), .black.opacity(0.28)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            }
-            .ignoresSafeArea()
+        GeometryReader { proxy in
+            Image(pet.room?.backgroundSprite ?? "bg_meadow")
+                .resizable()
+                .interpolation(.none)
+                .scaledToFill()
+                // The 96x64 artwork is 1.5:1 while a phone is roughly 0.45:1.
+                // An unconstrained scaledToFill asks for ~1300pt of width to
+                // cover the screen height. That widened the whole ZStack and
+                // pushed the header, stat bars and action dock off-screen.
+                .frame(width: proxy.size.width, height: proxy.size.height)
+                .clipped()
+                .overlay {
+                    LinearGradient(
+                        colors: [.black.opacity(0.06), .black.opacity(0.28)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                }
+        }
+        .ignoresSafeArea()
     }
 
     private var spriteLayer: some View {
@@ -73,6 +81,7 @@ struct HomeView: View {
         .padding(.horizontal, 16)
         .padding(.bottom, 8)
         .padding(.top, 4)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 
     // MARK: - Cards
@@ -180,6 +189,7 @@ struct HomeView: View {
                 ) { store.explore() }
             }
         }
+        .frame(maxWidth: .infinity)
         .padding(.top, 2)
     }
 

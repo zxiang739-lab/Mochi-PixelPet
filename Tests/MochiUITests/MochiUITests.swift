@@ -19,10 +19,11 @@ final class MochiUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Mochi"].waitForExistence(timeout: 20), "pet name should appear on launch")
 
         for label in ["抚摸", "喂食", "玩耍", "清理", "探索"] {
-            XCTAssertTrue(
-                app.buttons["action.\(label)"].exists,
-                "action dock is missing \(label)"
-            )
+            let button = app.buttons["action.\(label)"]
+            XCTAssertTrue(button.exists, "action dock is missing \(label)")
+            // `exists` alone is not enough: an off-screen button still exists
+            // in the hierarchy but cannot be tapped. Guard the layout too.
+            XCTAssertTrue(button.isHittable, "action \(label) is laid out off-screen")
         }
     }
 
