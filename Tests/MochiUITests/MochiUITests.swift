@@ -19,7 +19,10 @@ final class MochiUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Mochi"].waitForExistence(timeout: 20), "pet name should appear on launch")
 
         for label in ["抚摸", "喂食", "玩耍", "清理", "探索"] {
-            XCTAssertTrue(app.buttons[label].exists, "action dock is missing \(label)")
+            XCTAssertTrue(
+                app.buttons["action.\(label)"].exists,
+                "action dock is missing \(label)"
+            )
         }
     }
 
@@ -39,20 +42,25 @@ final class MochiUITests: XCTestCase {
     func testPettingShowsFeedback() {
         let app = launchApp()
 
-        let stroke = app.buttons["抚摸"]
+        let stroke = app.buttons["action.抚摸"]
         XCTAssertTrue(stroke.waitForExistence(timeout: 20))
         stroke.tap()
 
         let toast = app.staticTexts
             .containing(NSPredicate(format: "label CONTAINS %@", "眯起了眼睛"))
             .firstMatch
-        XCTAssertTrue(toast.waitForExistence(timeout: 6), "petting should produce a visible receipt")
+        // The message is an autoclosure: it is only evaluated after the wait,
+        // so a failure reports what was actually on screen at that moment.
+        XCTAssertTrue(
+            toast.waitForExistence(timeout: 6),
+            "petting should produce a visible receipt; visible texts: \(app.staticTexts.allElementsBoundByIndex.map { $0.label })"
+        )
     }
 
     func testFeedingSheetOpensAndListsFood() {
         let app = launchApp()
 
-        let feed = app.buttons["喂食"]
+        let feed = app.buttons["action.喂食"]
         XCTAssertTrue(feed.waitForExistence(timeout: 20))
         feed.tap()
 

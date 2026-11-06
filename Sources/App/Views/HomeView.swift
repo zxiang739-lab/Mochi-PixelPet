@@ -203,6 +203,7 @@ struct HomeView: View {
 
 struct FeedSheet: View {
     @Environment(PetStore.self) private var store
+    @Environment(\.dismiss) private var dismiss
 
     private var availableFoods: [ItemDefinition] {
         ItemCatalog.shared.foods.filter { store.pet.count(of: $0.id) > 0 }
@@ -232,7 +233,7 @@ struct FeedSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("关闭") { store.dismissToast() }
+                    Button("关闭") { dismiss() }
                 }
             }
         }

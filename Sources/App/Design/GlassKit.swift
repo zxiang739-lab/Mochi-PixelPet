@@ -140,10 +140,15 @@ struct GlassActionButton: View {
             .frame(maxWidth: .infinity)
             .frame(height: 58)
             .padding(.horizontal, 2)
+            // Liquid Glass draws the material outside the label's own bounds.
+            // Without an explicit hit shape, taps near the edge can fall through
+            // to the SpriteView underneath and trigger a second interaction.
+            .contentShape(Rectangle())
         }
         .buttonStyle(.glass)
         .disabled(!isEnabled)
         .accessibilityLabel(title)
+        .accessibilityIdentifier("action.\(title)")
     }
 }
 

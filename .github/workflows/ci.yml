@@ -54,7 +54,10 @@ jobs:
       # target, then runs them. A separate build step would only repeat this work.
       - name: Build and run all tests
         run: |
-          set -o pipefail
+          # No -quiet on purpose: failing assertions only reach stdout in the
+          # verbose log, and a green/red badge alone is not enough to debug a UI
+          # regression on a remote runner.
+          set +e
           xcodebuild test \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
@@ -63,7 +66,12 @@ jobs:
             -resultBundlePath build/Tests.xcresult \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            -quiet 2>&1 | tee test.log
+            2>&1 | tee test.log
+          status=${PIPESTATUS[0]}
+          echo "::group::Test highlights"
+          grep -E "Test Case .*(passed|failed)|Failing tests:|error:|XCTAssert|\*\* TEST (SUCCEEDED|FAILED) \*\*|Executed [0-9]+ test" test.log | tail -120 || true
+          echo "::endgroup::"
+          exit "$status"
 
       - name: Screenshot the running app
         if: always()
@@ -90,13 +98,22 @@ jobs:
           cp test.log artifacts/ 2>/dev/null || true
           ls -la artifacts
 
+      # Screenshots stay in their own small artifact so a visual check does not
+      # require downloading the ~70 MB simulator build first.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Mochi-screenshots
+          path: screenshots/
+          if-no-files-found: warn
+          retention-days: 30
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Mochi-simulator-build
           path: |
             artifacts/
-            screenshots/
             build/Tests.xcresult
           if-no-files-found: warn
           retention-days: 30
